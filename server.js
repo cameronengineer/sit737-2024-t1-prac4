@@ -103,7 +103,9 @@ app.get("/multiply", (req, res) => {
 app.get("/divide", (req, res) => {
     var [valid, n1, n2, error] = validateInput(req.query.n1, req.query.n2)
 
-    if ( n2 == 0.0 ) {
+    console.log(n2)
+
+    if ( n2 == 0.0 && valid == true) {
         valid = false
         error = 'Unable to divide by zero'
         logger.log({

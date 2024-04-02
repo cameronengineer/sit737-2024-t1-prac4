@@ -1,26 +1,45 @@
-# English To Pirate Translator
+# Logging Calculator
 
 ## Overview
 
-This platform provides a way for land dwellers, like your self, to translate your text into the pirate language! The platform will receave a string, and translate/replace words as required.
-
-The pirate dictonary has located in the dictonary.json file. This file will be read at server startup and will be used to perform the translations. NOTE: Updating the dictonary will the server is running will not take affect because the dictionary is loaded into memory when the server is booted.
+The logging calculator allows a user to use rest API's to perform basic calculations such as addition, subtraction.multiplication, division. 
 
 ## How to Use!
 
-The server responds to GET requests where the text to be translated is provided as a query perameters. See below some examples of using the tool with curl commands.
+The server responds to GET requests where two numbers, n1 and n2, are provided as query perameters. See below some examples of using the tool with curl commands.
 
-#### Display the README
+#### Addition
 
-curl localhost:3000/
+curl "localhost:3000/add?n1=4&n2=2"                                              
+{"statuscocde":200,"data":6}
 
-#### Translate Hello to Pirate.
-curl localhost:3000/translate?input=hello
+#### Subtraction
 
-ahoy
+curl "localhost:3000/add?n1=4&n2=2"                                              
+{"statuscocde":200,"data":6}
 
-#### Translate a sentance to pirate
-curl localhost:3000/translate?input=hello+friend+lets+attack+a+ship+after+we+drink+this+rum
+#### Multiplication
 
-ahoy matey lets raid a vessel after we drink this grog
+curl "localhost:3000/multiply?n1=4&n2=2"
+{"statuscocde":200,"data":8}
 
+#### Division
+
+curl "localhost:3000/divide?n1=4&n2=2"
+{"statuscocde":200,"data":2}
+
+#### Divide by Zero
+
+curl "localhost:3000/divide?n1=4&n2=0"
+{"statuscocde":500,"msg":"Unable to divide by zero"}
+
+#### Provide Invalid Input
+
+curl "localhost:3000/subtract?n1=4"
+{"statuscocde":500,"msg":"Error: n2 incorrectly defined"}
+
+#### Error logs can be veiwed at logs/error.log
+
+cat error.log
+{"level":"error","message":"Unable to divide by zero","service":"calculator-microservice"}
+{"level":"error","message":"n2 is incorrectly defined","service":"calculator-microservice"}
