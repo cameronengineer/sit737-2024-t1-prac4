@@ -33,6 +33,21 @@ curl "localhost:3000/divide?n1=4&n2=2"
 curl "localhost:3000/divide?n1=4&n2=0"
 {"statuscocde":500,"msg":"Unable to divide by zero"}
 
+#### Calculate Exponential
+
+curl "localhost:3000/exponent?n1=4&n2=2"
+{"statuscocde":200,"data":16}
+
+#### Calculate Square Root ( Note Only Single Value Required )
+
+curl "localhost:3000/squareroot?n1=4"
+{"statuscocde":200,"data":2}
+
+#### Calculate Modulo
+
+curl "localhost:3000/modulo?n1=4&n2=2"
+{"statuscocde":200,"data":0}
+
 #### Provide Invalid Input
 
 curl "localhost:3000/subtract?n1=4"

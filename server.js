@@ -34,25 +34,39 @@ const logger = winston.createLogger({
     ],
 });
 
-function validateInput(n1_raw, n2_raw) {
+function validateInput(n1_raw, n2_raw = undefined, single_value=false) {
     try {
 
         const n1 = parseFloat(n1_raw);
         const n2 = parseFloat(n2_raw);
 
+        console.log(n1_raw)
+        console.log(n2_raw)
+        console.log(single_value)
+
         if (isNaN(n1)) {
+
             logger.log({
                 level: 'error',
                 message: 'n1 is incorrectly defined'
             });
             throw new Error("n1 incorrectly defined");
-        }
-        if (isNaN(n2)) {
+
+        } else if (isNaN(n2) && single_value == true) {
+
+            logger.log({
+                level: 'info',
+                message: 'Single value validation enabled'
+            });
+
+        } else if (isNaN(n2) && single_value == false) {
+
             logger.log({
                 level: 'error',
                 message: 'n2 is incorrectly defined'
             });
             throw new Error("n2 incorrectly defined");
+
         }
 
         logger.log({
@@ -120,6 +134,39 @@ app.get("/divide", (req, res) => {
         res.status(500).json({statuscocde:500, msg: error })
     }  
 });
+
+
+app.get("/exponent", (req, res) => {
+    var [valid, n1, n2, error] = validateInput(req.query.n1, req.query.n2)
+
+    if ( valid ) {
+        res.status(200).json({statuscocde:200, data: n1 ** n2 }); 
+    } else {
+        res.status(500).json({statuscocde:500, msg: error })
+    }  
+});
+
+
+app.get("/squareroot", (req, res) => {
+    var [valid, n1, n2, error] = validateInput(req.query.n1, req.query.n2, single_value=true)
+
+    if ( valid ) {
+        res.status(200).json({statuscocde:200, data: Math.sqrt(n1) }); 
+    } else {
+        res.status(500).json({statuscocde:500, msg: error })
+    }  
+});
+
+app.get("/modulo", (req, res) => {
+    var [valid, n1, n2, error] = validateInput(req.query.n1, req.query.n2)
+
+    if ( valid ) {
+        res.status(200).json({statuscocde:200, data: n1 % n2 }); 
+    } else {
+        res.status(500).json({statuscocde:500, msg: error })
+    }  
+});
+
 
 
 // Start listening for responses
