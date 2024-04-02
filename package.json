@@ -1,0 +1,23 @@
+{
+    "name": "sit737",
+    "version": "1.0.0",
+    "description": "sit737",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server_get.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/cameronengineer/sit725-2021-t2-prac2.git"
+    },
+    "author": "Navit Choudhary",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/cameronengineer/sit725-2021-t2-prac2/issues"
+    },
+    "homepage": "https://github.com/cameronengineer/sit725-2021-t2-prac2#readme",
+    "dependencies": {
+        "express": "^4.19.2",
+        "winston": "^3.13.0"
+    }
+}
