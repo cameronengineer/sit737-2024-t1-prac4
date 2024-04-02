@@ -4,6 +4,10 @@
 
 The logging calculator allows a user to use rest API's to perform basic calculations such as addition, subtraction.multiplication, division. 
 
+## Function Description.
+
+Each API endpoint uses the validateInput function to determine if the provided input is valid. This validInput function checks that the variables are provided. For 4.2C this function was extended to support a single value using an optional boolean variable. This single value support was required for the square root calculation.
+
 ## How to Use!
 
 The server responds to GET requests where two numbers, n1 and n2, are provided as query perameters. See below some examples of using the tool with curl commands.
